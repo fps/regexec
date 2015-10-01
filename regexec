@@ -16,6 +16,13 @@ parser.add_argument(
 )
 
 parser.add_argument(
+    "-n", 
+    help="How many characters to strip from the end of command outputs - useful to remove trailing newlines", 
+    default=0,
+    type=int
+)
+
+parser.add_argument(
     "-c", 
     help="The command to run with the expression's match groups as arguments and who's output replaces the match", 
     default=r"cat \1"
@@ -50,14 +57,15 @@ for match in matches:
     inp_index = span[1]
 
     new_c = args.c
-    for index in xrange(1, match.lastindex + 1):
-        verbose_log(1, "$" + str(index) + ": " + match.group(index))
-        new_c = string.replace(new_c, "\\" + str(index), match.group(index))
-        verbose_log(1, "new_c: " + new_c)
+    if match.lastindex:
+        for index in xrange(1, match.lastindex + 1):
+            verbose_log(1, "$" + str(index) + ": " + match.group(index))
+            new_c = string.replace(new_c, "\\" + str(index), match.group(index))
+            verbose_log(1, "new_c: " + new_c)
 
     suboutput = subprocess.check_output(new_c, shell=True)
     verbose_log(1, "suboutput: " + suboutput)
-    out += suboutput
+    out += suboutput[0:len(suboutput)-args.n]
 
 out += inp[inp_index:]
 
