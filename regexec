@@ -1,8 +1,45 @@
 #!/usr/bin/env python2
 
+import re
 import sys
+import string
+import argparse
 import subprocess
 
-input = sys.stdin.read()
+import argparse
+parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
+parser.add_argument("-e", help="The (python2) regular expression", default="\\[include ([a-zA-Z0-9\\.]*)\\]")
+parser.add_argument("-c", help="The command to run with the expression's match groups as arguments and who's output replaces the match", default="cat $1")
+args = parser.parse_args()
 
+# args.e = '\\[include ([a-zA-Z0-9\.]*)\\]'
+
+# c = 'cat \\0'
+# c = 'echo lalalalalalalilili'
+
+p = re.compile(args.e)
+
+inp = sys.stdin.read()
+out = ""
+
+iterator = p.finditer(inp)
+
+inp_index = 0
+for match in iterator:
+    span = match.span()
+    
+    out += inp[inp_index:span[0]]
+    inp_index = span[1]
+
+    new_c = args.c
+    for index in xrange(1, len(match.groups())):
+        print("match group " + str(index) + ": " + match.group(index))
+        new_c = string.replace(new_c, "$" + str(index), match.group(index))
+        print("new_c: " + new_c)
+
+    suboutput = subprocess.check_output(new_c, shell=True)
+    print("suboutput: " + suboutput)
+    out += suboutput
+
+print(out),

@@ -1,0 +1,8 @@
+This text should go:
+
+[include text1.txt]
+
+and
+
+[include text2.txt]
+
