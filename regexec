@@ -23,11 +23,6 @@ parser.add_argument(
 
 args = parser.parse_args()
 
-# args.e = '\\[include ([a-zA-Z0-9\.]*)\\]'
-
-# c = 'cat \\0'
-# c = 'echo lalalalalalalilili'
-
 p = re.compile(args.e)
 
 inp = sys.stdin.read()
