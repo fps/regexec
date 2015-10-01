@@ -9,8 +9,18 @@ import subprocess
 import argparse
 parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-parser.add_argument("-e", help="The (python2) regular expression", default="\\[include ([a-zA-Z0-9\\.]*)\\]")
-parser.add_argument("-c", help="The command to run with the expression's match groups as arguments and who's output replaces the match", default="cat $1")
+parser.add_argument(
+    "-e", 
+    help="The (python2) regular expression", 
+    default="\\[include ([a-zA-Z0-9\\.]*)\\]"
+)
+
+parser.add_argument(
+    "-c", 
+    help="The command to run with the expression's match groups as arguments and who's output replaces the match", 
+    default="cat $1"
+)
+
 args = parser.parse_args()
 
 # args.e = '\\[include ([a-zA-Z0-9\.]*)\\]'
