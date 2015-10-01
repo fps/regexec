@@ -19,7 +19,7 @@ usage: regexec [-h] [-e E] [-n N] [-c C] [-v V]
 
 optional arguments:
   -h, --help  show this help message and exit
-  -e E        The (python2) regular expression (default: \[include (.+)\])
+  -e E        The (python2) regular expression (default: \[include (.+?)\])
   -n N        How many characters to strip from the end of command outputs -
               useful to remove trailing newlines (default: 0)
   -c C        The command to run with the expression's match groups as
