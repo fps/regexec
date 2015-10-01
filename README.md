@@ -7,7 +7,7 @@ Note: Even though the tool expects input from <code>stdin</code> it consumes the
 <code>README.md</code> was generated from <code>README.md.in</code> via:
 
 <pre>
-cat README.md.in | regexec -e "\[usage\]" -c "./regexec -h" -n 1 | less
+cat README.md.in | ./regexec -e "\[usage\]" -c "./regexec -h" -n 1 > README.md
 </pre>
 
 This way you get this:
@@ -74,13 +74,13 @@ Lululu
 This: 
 
 <pre>
-echo "hello, 1 + 2 = [bc 1 + 2]. But 4 - 3 = [bc 4 - 3]" | regexec -e "\[bc (.*?)\]" -c "echo  \1  | bc"  -n 1
+echo "Yo, 1 + 2 = [bc 1 + 2]. But 4 - 3 = [bc 4 - 3]" | regexec -e "\[bc (.*?)\]" -c "echo  \1  | bc"  -n 1
 </pre>
 
 should give 
 
 <pre>
-hello, 1 + 2 = 3. But 4 - 3 = 1.
+Y, 1 + 2 = 3. But 4 - 3 = 1.
 </pre>
 
 
