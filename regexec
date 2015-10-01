@@ -12,7 +12,7 @@ parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFo
 parser.add_argument(
     "-e", 
     help="The (python2) regular expression", 
-    default=r"\[include (.+)\]"
+    default=r"\[include (.+?)\]"
 )
 
 parser.add_argument(
