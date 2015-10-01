@@ -73,7 +73,7 @@ echo "Yo, 1 + 2 = [bc 1 + 2]. But 4 - 3 = [bc 4 - 3]" | regexec -e "\[bc (.*?)\]
 should give 
 
 <pre>
-Y, 1 + 2 = 3. But 4 - 3 = 1.
+Yo, 1 + 2 = 3. But 4 - 3 = 1.
 </pre>
 
 
