@@ -2,6 +2,8 @@
 
 Note: Even though the tool expects input from <code>stdin</code> it consumes the whole input before starting to process because regexes :)
 
+Note: With default parameters it replaces <code>[include somefile.txt]</code> by the contents of <code>somefile.txt</code>. See the example below.
+
 # Usage
 
 <code>README.md</code> was generated from <code>README.md.in</code> via:
@@ -30,7 +32,7 @@ and <code>text2.txt</code>:
 Lululu
 </pre>
 
-and <code>text3.txt</code>
+and <code>text3.txt</code>:
 
 <pre>
 This text should go
