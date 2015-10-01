@@ -1,5 +1,7 @@
 # regexec
 
+Note: Even though the tool expects input from <code>stdin</code> it consumes the whole input before starting to process because regexes :)
+
 # Example - Including Textfiles into a Textfile
 
 Given <code>file1.txt</code>:
