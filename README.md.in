@@ -12,7 +12,9 @@ cat README.md.in | ./regexec -e "\[usage\]" -c "./regexec -h" -n 1 | less
 
 This way you get this:
 
+<pre>
 [usage]
+</pre>
 
 # Example - Including Textfiles into a Textfile
 

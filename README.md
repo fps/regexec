@@ -12,6 +12,7 @@ cat README.md.in | ./regexec -e "\[usage\]" -c "./regexec -h" -n 1 | less
 
 This way you get this:
 
+<pre>
 usage: regexec [-h] [-e E] [-n N] [-c C] [-v V]
 
 optional arguments:
@@ -22,6 +23,7 @@ optional arguments:
   -c C        The command to run with the expression's match groups as
               arguments and who's output replaces the match (default: cat \1)
   -v V        The verbosity level (default: 0)
+</pre>
 
 # Example - Including Textfiles into a Textfile
 
