@@ -30,8 +30,8 @@ parser.add_argument(
 
 args = parser.parse_args()
 
-def verbose_log(s, l):
-    if args.v > l:
+def verbose_log(l, s):
+    if args.v >= l:
         print(s)
 
 p = re.compile(args.e)
@@ -43,7 +43,7 @@ matches = p.finditer(inp)
 
 inp_index = 0
 for match in matches:
-    verbose_log("lastindex: " + str(match.lastindex), 1)
+    verbose_log(1, "lastindex: " + str(match.lastindex))
     span = match.span()
     
     out += inp[inp_index:span[0]]
@@ -51,12 +51,12 @@ for match in matches:
 
     new_c = args.c
     for index in xrange(1, match.lastindex + 1):
-        verbose_log("$" + str(index) + ": " + match.group(index), 1)
+        verbose_log(1, "$" + str(index) + ": " + match.group(index))
         new_c = string.replace(new_c, "\\" + str(index), match.group(index))
-        verbose_log("new_c: " + new_c, 1)
+        verbose_log(1, "new_c: " + new_c)
 
     suboutput = subprocess.check_output(new_c, shell=True)
-    verbose_log("suboutput: " + suboutput, 1)
+    verbose_log(1, "suboutput: " + suboutput)
     out += suboutput
 
 out += inp[inp_index:]
