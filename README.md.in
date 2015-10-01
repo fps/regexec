@@ -7,7 +7,7 @@ Note: Even though the tool expects input from <code>stdin</code> it consumes the
 <code>README.md</code> was generated from <code>README.md.in</code> via:
 
 <pre>
-cat README.md.in | ./regexec -e "\[usage\]" -c "./regexec -h" -n 1 | less
+cat README.md.in | ./regexec -e "\[usage\]" -c "./regexec -h" -n 1
 </pre>
 
 This way you get this:
