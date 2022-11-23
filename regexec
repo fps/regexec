@@ -57,9 +57,9 @@ for match in matches:
     new_c = args.c
     if match.lastindex:
         verbose_log(1, "lastindex: " + str(match.lastindex))
-        for index in xrange(1, match.lastindex + 1):
+        for index in range(1, match.lastindex + 1):
             verbose_log(1, "$" + str(index) + ": " + match.group(index))
-            new_c = string.replace(new_c, "\\" + str(index), match.group(index))
+            new_c = new_c.replace("\\" + str(index), match.group(index))
             verbose_log(1, "new_c: " + new_c)
 
     suboutput = subprocess.check_output(new_c, shell=True).decode('utf-8')
