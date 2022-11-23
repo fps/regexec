@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 import re
 import sys
@@ -62,7 +62,7 @@ for match in matches:
             new_c = string.replace(new_c, "\\" + str(index), match.group(index))
             verbose_log(1, "new_c: " + new_c)
 
-    suboutput = subprocess.check_output(new_c, shell=True)
+    suboutput = subprocess.check_output(new_c, shell=True).decode('utf-8')
     verbose_log(1, "suboutput: " + suboutput)
     out += suboutput[0:len(suboutput)-args.n]
 
