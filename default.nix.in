@@ -1,0 +1,16 @@
+{ lib, stdenv, buildPythonPackage, pkgs, ... }:
+
+buildPythonPackage rec {
+  pname = "regexec";
+  version = "[version]";
+
+  src = ./.;
+
+  doCheck = false;
+
+  # Meta information for the package
+  meta = {
+    description = ''
+    '';
+  };
+}
